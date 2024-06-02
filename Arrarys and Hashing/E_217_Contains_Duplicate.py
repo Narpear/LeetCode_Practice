@@ -7,3 +7,11 @@ class Solution:
                 continue
             return True
         return False
+    
+## alternate solution 
+# nums_set = set(nums)
+# n = len(nums)
+# m = len(nums_set)
+# if n==m:
+# return False
+# return True
