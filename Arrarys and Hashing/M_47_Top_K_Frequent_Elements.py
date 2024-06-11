@@ -1,17 +1,17 @@
 class Solution:
+    
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        set_nums = set(nums)
         counts = {}
-        for number in set_nums:
-            counts[number] = nums.count(number)
+        for number in nums:
+            if number in counts:
+                counts[number] += 1
+                continue
+            counts[number] = 1
+      
+        counts_items = list(counts.items())
 
-        # print("counts: ", counts)
+        counts_items.sort(reverse = True, key = lambda x: x[1])
+        # print(counts_items)
+        return [element[0] for element in counts_items[:k]]
 
-        counts = [(key, value) for key, value in counts.items()]
-        # print("counts: ", counts)
-
-        counts.sort(key = lambda x:x[1], reverse = True)
-        # print("most elements", counts)
-
-        result = [a for (a,b) in counts][:k]
-        return result
+        
