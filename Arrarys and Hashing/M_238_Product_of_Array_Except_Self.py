@@ -1,21 +1,24 @@
+from typing import List
+
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
-        product_till = [1]
         n = len(nums)
-
-        for i in range(n-1):
-            product_till.append(nums[i]*product_till[i])
-
-        # print(product_till)
-
+        product_till = [1]*n
         product_beyond = [1]*n
+
+        for i in range(1, n):
+            product_till[i] = product_till[i-1]*nums[i-1]
+            
+        # print(product_till)
 
         for i in range(n-2, -1, -1):
             product_beyond[i] = product_beyond[i+1]*nums[i+1]
 
         # print(product_beyond)
 
-        for i in range(n):
-            product_beyond[i] = product_beyond[i]*product_till[i]
+        for i in range(1, n):
+            product_beyond[i] *= product_till[i]
+
+        # print(product_beyond)
 
         return product_beyond
