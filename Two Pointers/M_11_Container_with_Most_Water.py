@@ -1,17 +1,18 @@
+from typing import List
+
 class Solution:
     def maxArea(self, height: List[int]) -> int:
         n = len(height)
-        max_area = 0
+        lp = 0
+        rp = n-1
+        max_water = 0
 
-        left_ptr = 0
-        right_ptr = n-1
-
-        while(left_ptr<right_ptr):
-            area = (right_ptr-left_ptr)*min(height[left_ptr], height[right_ptr])
-            if height[left_ptr]>height[right_ptr]:
-                right_ptr -= 1
+        while lp<rp:
+            water = min(height[lp], height[rp])*(rp-lp)
+            max_water = max(max_water, water)
+            if height[lp]>height[rp]:
+                rp -= 1
             else:
-                left_ptr += 1
-            max_area = max(max_area, area)
+                lp += 1
 
-        return max_area
+        return max_water
