@@ -5,6 +5,7 @@ class Solution:
         m = len(matrix)
         n = len(matrix[0])
 
+        # finding row number
         for i in range(m-1):
             if target>=matrix[i][0] and target<matrix[i+1][0]:
                 row_number = i
@@ -12,6 +13,7 @@ class Solution:
         if row_number==-1:
             row_number = m-1
 
+        # checking if the number is present in the row or not
         left = 0
         right = n-1
         while(left<=right):
