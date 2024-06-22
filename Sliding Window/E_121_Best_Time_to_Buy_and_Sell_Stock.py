@@ -1,13 +1,15 @@
+from typing import List
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        n = len(prices)
-        max_future = [0]*n
-        max_future[n-1] = 0
-        for i in range(n-2, -1, -1):
-            max_future[i] = max(max_future[i+1],prices[i+1])
-        
-        for i in range(n):
-            max_future[i] = max_future[i] - prices[i]
+        left = 0
+        right = 1
+        max_profit = 0
+        while(right<len(prices)):
+            if prices[left]<prices[right]:
+                profit = prices[right] - prices[left]
+                max_profit = max(max_profit, profit)
+            else:
+                left = right
+            right = right+1
 
-        max_profit = max(max_future)
-        return (max(max_profit, 0))
+        return max_profit
