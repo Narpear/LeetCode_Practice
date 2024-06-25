@@ -1,7 +1,12 @@
 class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
+        
+        if not strs:
+            return ""
+
         chars = []
         min_length = len(strs[0])
+
         for element in strs:
             min_length = min(min_length, len(element))
         # print(min_length)
@@ -23,5 +28,6 @@ class Solution:
 
         result = "".join(chars)
         # print(result)
+        
         return result
 
