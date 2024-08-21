@@ -7,7 +7,7 @@ class Solution:
         edges = collections.defaultdict(list)
         for u, v, w in times:
             edges[u].append((v, w))
-        print(edges)
+        # print(edges)
 
         minHeap = [(0, k)]
         visited = set()
